@@ -1,0 +1,7 @@
+export const LOGIN_USER = 'LOGIN_USER'
+export const LOGOUT_USER = 'LOGOUT_USER'
+export const DETAILS_PAGE = 'DETAILS_PAGE'
+export const LOGIN_ERROR = 'LOGIN_ERROR'
+export const LOGIN_END = 'LOGIN_END'
+export const LOGIN_START = 'LOGIN_START'
+export const CLEAR_ERROR_MESSAGE = 'CLEAR_ERROR_MESSAGE'
