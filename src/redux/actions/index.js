@@ -38,6 +38,7 @@ export function loginUser(data) {
         return dispatch(userLogin(response.data))
       })
       .catch(err => {
+        dispatch(loginEnd())
         return dispatch(userLoginError(err))
       })
   }

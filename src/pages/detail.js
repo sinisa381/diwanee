@@ -18,17 +18,21 @@ const Detail = props => {
       {props.user &&
         props.user.details &&
         props.user.details.items &&
-        props.user.details.items.map((detail, i) => {
-          return (
-            <CardComponent
-              key={i}
-              src={detail.base64_img_jpg}
-              title={detail.title}
-              body={detail.body}
-              weight={detail.order_weight}
-            />
-          )
-        })}
+        props.user.details.items
+          .sort(function(a, b) {
+            return b.order_weight - a.order_weight
+          })
+          .map((detail, i) => {
+            return (
+              <CardComponent
+                key={i}
+                src={detail.base64_img_jpg}
+                title={detail.title}
+                body={detail.body}
+                weight={detail.order_weight}
+              />
+            )
+          })}
     </Grid>
   )
 
