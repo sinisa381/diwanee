@@ -12,24 +12,18 @@ const FormField = ({ formdata, change, id, error }) => {
   }
 
   const renderTemplate = () => {
-    let template = null
-    switch (formdata.element) {
-      case 'input':
-        template = (
-          <React.Fragment>
-            <Input
-              error={error}
-              {...formdata.config}
-              value={formdata.value}
-              onBlur={event => change({ event, id, blur: true })}
-              onChange={event => change({ event, id })}
-            />
-            {showError()}
-          </React.Fragment>
-        )
-        break
-    }
-    return template
+    return (
+      <React.Fragment>
+        <Input
+          error={error}
+          {...formdata.config}
+          value={formdata.value}
+          onBlur={event => change({ event, id, blur: true })}
+          onChange={event => change({ event, id })}
+        />
+        {showError()}
+      </React.Fragment>
+    )
   }
 
   return <div>{renderTemplate()}</div>

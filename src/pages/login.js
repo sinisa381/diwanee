@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import theme from '../components/globals/theme'
 import styled from 'styled-components'
 import FormField from '../components/form/form_fields'
@@ -6,21 +6,11 @@ import { ErrorMsg, NullError } from '../components/shared'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { update, generateData } from '../components/form/form_actions'
-import { loginUser, logout, clearErrorMessage } from '../redux/actions'
+import { loginUser, clearErrorMessage } from '../redux/actions'
 import { Box, Flex } from 'rebass'
-import Cookies from 'universal-cookie'
 const Login = props => {
   const [formData, setFormData] = useState(initialState)
   const [formError, setFormError] = useState(false)
-  console.log(props)
-
-  useEffect(() => {
-    const cookies = new Cookies()
-    const ps = cookies.get('PHPSESSID')
-    if (!ps) {
-      props.dispatch(logout())
-    }
-  }, [])
 
   const submitForm = e => {
     e.preventDefault()
