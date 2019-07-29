@@ -6,6 +6,7 @@ export default function(ComposedComponent, reload) {
   const Auth = props => {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
+      setLoading(props.user.loading)
       setLoading(false)
       if (!props.user.isAuth) {
         if (reload) {
@@ -18,7 +19,12 @@ export default function(ComposedComponent, reload) {
       }
     }, [props.user.isAuth])
 
-    if (loading) return <div>loading...</div>
+    if (loading)
+      return props.match.path ? (
+        <Redirect to={props.match.path} />
+      ) : (
+        <Redirect to='/' />
+      )
 
     return <ComposedComponent {...props} user={props.user} />
   }
